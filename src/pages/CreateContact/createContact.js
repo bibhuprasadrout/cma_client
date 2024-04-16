@@ -29,7 +29,7 @@ const CreateContact = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!updateContact._id) {
-      const res = await fetch("http://localhost:8000/api/contact", {
+      const res = await fetch(`${SERVER_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const CreateContact = () => {
   const fetchUpdatedContact = async (id) => {
     try {
       const updatedCotactDetails = { id, ...contactDetails };
-      const res = await fetch("http://localhost:8000/api/contact", {
+      const res = await fetch(`${SERVER_URL}/api/contact`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

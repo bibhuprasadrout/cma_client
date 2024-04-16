@@ -16,7 +16,7 @@ const AllContacts = () => {
   };
   const fetchContactList = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/mycontacts", {
+      const res = await fetch("SERVER_URL/api/mycontacts", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -34,7 +34,7 @@ const AllContacts = () => {
   };
   const fetchSingleContact = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/contact/${id}`, {
+      const res = await fetch(`SERVER_URL/api/contact/${id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -55,7 +55,7 @@ const AllContacts = () => {
   }, []);
   const fetchDeleteContact = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/delete/${id}`, {
+      const res = await fetch(`SERVER_URL/api/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

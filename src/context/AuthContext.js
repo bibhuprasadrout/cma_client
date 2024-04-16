@@ -17,7 +17,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const loginUser = async (userData) => {
     try {
-      const res = await fetch("http://localhost:8000/api/login", {
+      const res = await fetch("SERVER_URL/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const registerUser = async (userData) => {
     try {
-      const res = await fetch("http://localhost:8000/api/register", {
+      const res = await fetch("SERVER_URL/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export const AuthContextProvider = ({ children }) => {
     // if (!localStorage.getItem("token")) nav("/login", { replace: true });
     if (user)
       try {
-        const res = await fetch("http://localhost:8000/api/me", {
+        const res = await fetch("SERVER_URL/api/me", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
