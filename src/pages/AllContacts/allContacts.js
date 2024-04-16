@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import useToast from "../../customHooks/useToast";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import { SERVER_URL } from "../../config/constants";
 
 const AllContacts = () => {
   const nav = useNavigate();
@@ -16,7 +17,7 @@ const AllContacts = () => {
   };
   const fetchContactList = async () => {
     try {
-      const res = await fetch("SERVER_URL/api/mycontacts", {
+      const res = await fetch(`${SERVER_URL}/api/mycontacts`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -34,7 +35,7 @@ const AllContacts = () => {
   };
   const fetchSingleContact = async (id) => {
     try {
-      const res = await fetch(`SERVER_URL/api/contact/${id}`, {
+      const res = await fetch(`${SERVER_URL}/api/contact/${id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -55,7 +56,7 @@ const AllContacts = () => {
   }, []);
   const fetchDeleteContact = async (id) => {
     try {
-      const res = await fetch(`SERVER_URL/api/delete/${id}`, {
+      const res = await fetch(`${SERVER_URL}/api/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

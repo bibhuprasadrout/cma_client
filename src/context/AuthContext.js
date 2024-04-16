@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import useToast from "../customHooks/useToast";
 import { useNavigate } from "react-router-dom";
+import { SERVER_URL } from "../config/constants";
 
 const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
@@ -17,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const loginUser = async (userData) => {
     try {
-      const res = await fetch("SERVER_URL/api/login", {
+      const res = await fetch(`${SERVER_URL}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +41,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const registerUser = async (userData) => {
     try {
-      const res = await fetch("SERVER_URL/api/register", {
+      const res = await fetch(`${SERVER_URL}/api/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +72,7 @@ export const AuthContextProvider = ({ children }) => {
     // if (!localStorage.getItem("token")) nav("/login", { replace: true });
     if (user)
       try {
-        const res = await fetch("SERVER_URL/api/me", {
+        const res = await fetch(`${SERVER_URL}/api/me`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
